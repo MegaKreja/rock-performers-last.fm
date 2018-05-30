@@ -1,0 +1,21 @@
+.card {
+  width: 320px;
+  height: 320px;
+  text-align: center;
+  background: #121212;
+  margin: 0 auto;
+  margin-top: 2.5%;
+}
+
+.card:hover {
+  
+}
+
+.card img {
+  margin-top: 12%;
+  border: 10px solid #ECB301;
+}
+
+span {
+  color: #ECB301;
+}
