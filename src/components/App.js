@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from "axios"
 import Card from "./Card";
+import Spinner from "./Spinner";
 import '../styles/App.css';
 
 class App extends Component {
@@ -27,12 +28,14 @@ class App extends Component {
       return (
         <Card key={i} artistName={artist.name} rank={i+1} img={artist.image[2]["#text"]}/>
       );
-    })
+    });
+
+    // na hoveru menja se state bool i salje se name api u state name, preko koga vadimo novi api tag.getinfo
 
     return (
       <div className="container">
         <h1>Top 10 <span>Rock</span> Performers</h1>
-        {topTen}
+        {topTen.length === 10 ? topTen : <Spinner />}
       </div>
     );
   }
