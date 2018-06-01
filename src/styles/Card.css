@@ -53,10 +53,11 @@ span {
   -o-backface-visibility: hidden;
   backface-visibility: hidden;
   position: absolute;
-  margin-left: auto;
-  margin-right: auto;
+  margin: auto;
   left: 0;
   right: 0;
+  top: 0;
+  bottom: 0;
 }
 
 .front {
@@ -68,4 +69,42 @@ span {
   -moz-transform: rotateX(180deg);
   -o-transform: rotateX(180deg);
   transform: rotateX(180deg);
+  padding-top: 10%;
+  /*color: #ECB301;*/
+}
+
+a {
+  text-decoration: none;
+}
+
+a.animated-button.thar-three {
+  color: #fff;
+  cursor: pointer;
+  display: block;
+  position: relative;
+  border: 2px solid #ECB301;
+  transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);
+}
+a.animated-button.thar-three:hover {
+  color: #000 !important;
+  background-color: transparent;
+  text-shadow: nthree;
+}
+a.animated-button.thar-three:hover:before {
+  left: 0%;
+  right: auto;
+  width: 100%;
+}
+a.animated-button.thar-three:before {
+  display: block;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  height: 100%;
+  width: 0px;
+  z-index: -1;
+  content: '';
+  color: #000 !important;
+  background: #ECB301;
+  transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);
 }

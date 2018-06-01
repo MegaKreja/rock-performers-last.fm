@@ -6,7 +6,9 @@ import '../styles/App.css';
 
 class App extends Component {
   state = {
-    rockArtists: []
+    rockArtists: [],
+    rockArtist: "",
+    summary: ""
   }
 
   componentDidMount() {
@@ -17,20 +19,32 @@ class App extends Component {
         console.log(rockArtists);
         this.setState({ rockArtists: rockArtists });
       })
+    
   }
 
   componentDidUpdate(prevProps, prevState) {
     console.log(this.state);
   }
 
+  changeName = (rockArtist) => {
+    this.setState({rockArtist: rockArtist});
+    this.setState({summary: ""});
+    const api = "5250da4d4e88ce97d088f9cc6229410b";
+    let name = rockArtist;
+    axios.get("http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=" + name + "&api_key=" + api + "&format=json")
+      .then(res => {
+        const summary = res.data.artist.bio.summary.substring(0, 300);
+        console.log(summary);
+        this.setState({ summary: summary });
+      })
+  }
+
   render() {
     const topTen = this.state.rockArtists.map((artist, i) => {
       return (
-        <Card key={i} artistName={artist.name} rank={i+1} img={artist.image[2]["#text"]}/>
+        <Card summary={this.state.summary} changeName={this.changeName} key={i} artistName={artist.name} rank={i+1} img={artist.image[2]["#text"]}/>
       );
     });
-
-    // na hoveru menja se state bool i salje se name api u state name, preko koga vadimo novi api tag.getinfo
 
     return (
       <div className="container">
