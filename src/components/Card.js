@@ -3,7 +3,7 @@ import Spinner from "./Spinner";
 import "../styles/Card.css";
 
 const card = (props) => {
-  console.log(props.img)
+  console.log(props.img);
   let backSide = (
     <p>{props.summary}...</p>
   )
@@ -17,7 +17,7 @@ const card = (props) => {
         </div>
         <div className="back">
           {props.summary ? backSide : <Spinner />}
-          <div><a href="#" className="btn btn-sm animated-button thar-three">Albums</a></div>
+          <div><a onClick={() => props.openAlbums(props.artistName)} className="btn btn-sm animated-button thar-three">Albums</a></div>
         </div>
       </div>
     </div>

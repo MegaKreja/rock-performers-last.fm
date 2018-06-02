@@ -1,4 +1,4 @@
-.container {
+.albums {
   text-align: center;
   background: #1B1B1B;
   height: 100%;
@@ -21,5 +21,5 @@ h1 {
 
 h1 span {
   color: #ECB301;
-  text-decoration: underline;
+  text-decoration: none;
 }
