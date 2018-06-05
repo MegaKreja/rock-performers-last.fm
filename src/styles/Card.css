@@ -73,6 +73,19 @@ span {
   /*color: #ECB301;*/
 }
 
+#songLink {
+  color: #ECB301;
+}
+
+#songParagraph {
+  margin: 0;
+  padding-top: 1%;
+}
+
+#songRank {
+  color: white;
+}
+
 a {
   text-decoration: none;
 }

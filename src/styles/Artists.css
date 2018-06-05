@@ -12,14 +12,14 @@
   font-weight: 400;
 }
 
-h1 {
+.artists h1 {
   padding-top: 3%;
   margin: 0;
   font-size: 3rem;
   font-weight: 900;
 }
 
-h1 span {
+.artists h1 span {
   color: #ECB301;
   text-decoration: underline;
 }
