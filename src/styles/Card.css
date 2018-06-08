@@ -82,6 +82,10 @@ span {
   padding-top: 1%;
 }
 
+#songLink:hover {
+  color: white;
+}
+
 #songRank {
   color: white;
 }
