@@ -13,7 +13,7 @@ class Artists extends Component {
 
   componentDidMount() {
     const api = "5250da4d4e88ce97d088f9cc6229410b";
-    axios.get("http://ws.audioscrobbler.com/2.0/?method=tag.gettopartists&tag=rock&api_key=" + api + "&format=json")
+    axios.get("https://ws.audioscrobbler.com/2.0/?method=tag.gettopartists&tag=rock&api_key=" + api + "&format=json")
       .then(res => {
         const rockArtists = res.data.topartists.artist.slice(0, 10);
         console.log(rockArtists);
@@ -30,7 +30,7 @@ class Artists extends Component {
     this.setState({summary: ""});
     const api = "5250da4d4e88ce97d088f9cc6229410b";
     let name = rockArtist;
-    axios.get("http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=" + name + "&api_key=" + api + "&format=json")
+    axios.get("https://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=" + name + "&api_key=" + api + "&format=json")
       .then(res => {
         const summary = res.data.artist.bio.summary.substring(0, 300);
         console.log(summary);
