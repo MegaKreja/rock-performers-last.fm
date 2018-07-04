@@ -23,3 +23,14 @@
   color: #ECB301;
   text-decoration: none;
 }
+
+input {
+  width: 25%;
+  font-size: 1rem;
+}
+
+::placeholder {
+  color: #1B1B1B;
+  opacity: 1;
+  font-family: 'Work Sans', sans-serif;
+}

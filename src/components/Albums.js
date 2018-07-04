@@ -7,6 +7,7 @@ import '../styles/Albums.css';
 class Albums extends Component {
   state = {
     albums: [],
+    filterAlbums: [],
     album: "",
     albumSongs: []
   }
@@ -18,7 +19,7 @@ class Albums extends Component {
       .then(res => {
         const albums = res.data.topalbums.album.slice(0, 10);
         console.log(albums);
-        this.setState({ albums: albums });
+        this.setState({ albums: albums, filterAlbums: albums });
       })
   }
 
@@ -40,8 +41,17 @@ class Albums extends Component {
       })
   }
 
+  findAlbum = (album) => {
+    console.log(album);
+    let filterAlbums = this.state.albums;
+    filterAlbums = filterAlbums.filter((el) => {
+      return el.name.toLowerCase().search(album.toLowerCase()) !== -1
+    });
+    this.setState({filterAlbums: filterAlbums});
+  }
+
   render() {
-    const topTenSongs = this.state.albums.map((album, i) => {
+    const topTenSongs = this.state.filterAlbums.map((album, i) => {
       return (
         <AlbumCard albumName={album.name} changeAlbumName={this.changeAlbumName} key={i} rank={i+1} img={album.image[2]["#text"]} albumSongs={this.state.albumSongs}/>
       );
@@ -50,7 +60,9 @@ class Albums extends Component {
     return (
       <div className="albums">
         <h1><span>{this.props.rockArtist}</span> Albums</h1>
-        {topTenSongs.length === 10 ? topTenSongs : <Spinner />}        
+        <h2><span>Search</span></h2>
+        <input type="text" name="search" placeholder="Find Album..." onChange={(e) => this.findAlbum(e.target.value)}/>
+        {topTenSongs.length > 0 ? topTenSongs : <Spinner />}         
       </div>
     );
   }
