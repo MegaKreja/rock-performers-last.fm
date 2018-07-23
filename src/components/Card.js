@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Spinner from "./Spinner";
 import "../styles/Card.css";
 
@@ -7,6 +8,7 @@ const card = (props) => {
   let backSide = (
     <p>{props.summary}...</p>
   )
+  let link = "/albums/" + props.artistName;
 
   return (
     <div className="flip-container">
@@ -17,7 +19,7 @@ const card = (props) => {
         </div>
         <div className="back">
           {props.summary ? backSide : <Spinner />}
-          <div><a onClick={() => props.openAlbums(props.artistName)} className="btn btn-sm animated-button thar-three">Albums</a></div>
+          <div><Link to={link} className="btn btn-sm animated-button thar-three">Albums</Link></div>
         </div>
       </div>
     </div>

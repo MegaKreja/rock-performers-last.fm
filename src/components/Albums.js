@@ -14,7 +14,7 @@ class Albums extends Component {
 
   componentDidMount() {
     const api = "5250da4d4e88ce97d088f9cc6229410b";
-    const rockArtist = this.props.rockArtist;
+    const rockArtist = window.location.pathname.substring(8);
     axios.get("https://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=" + rockArtist + "&api_key=" + api + "&format=json")
       .then(res => {
         const albums = res.data.topalbums.album.slice(0, 10);
@@ -32,7 +32,7 @@ class Albums extends Component {
     this.setState({albumSongs: []});
     const api = "5250da4d4e88ce97d088f9cc6229410b";
     let albumName = album;
-    let artist = this.props.rockArtist;
+    let artist = window.location.pathname.substring(8);;
     axios.get("https://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=" + api + "&artist=" + artist + "&album=" + albumName + "&format=json")
       .then(res => {
         const albumSongs = res.data.album.tracks.track.slice(0, 10);
