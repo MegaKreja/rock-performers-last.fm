@@ -43,7 +43,7 @@ class Albums extends Component {
 
   findAlbum = (album) => {
     console.log(album);
-    let filterAlbums = this.state.albums;
+    let filterAlbums = this.state.albums.slice();
     filterAlbums = filterAlbums.filter((el) => {
       return el.name.toLowerCase().search(album.toLowerCase()) !== -1
     });
